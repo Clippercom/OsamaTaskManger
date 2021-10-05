@@ -1,6 +1,7 @@
 package com.example.osamataskmanger;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -49,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
         }
         if(item.getItemId()==R.id.itmSignout)
         {
-
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            //
+            builder.setMessage("Are you sure?");
+            //
+            builder.setCancelable(true);
+            //
+            //builder.setPositiveButton("Yes",this);
+            //
         }
         return true;
     }
