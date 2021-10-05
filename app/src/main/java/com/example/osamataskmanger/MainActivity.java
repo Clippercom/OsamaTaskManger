@@ -1,15 +1,19 @@
 package com.example.osamataskmanger;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-    private SearchView svSearchTask;
+    private SearchView svTask;
     private ListView lstvAllTask;
     private FloatingActionButton faBtn;
 
@@ -18,9 +22,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       svSearchTask=findViewById(R.id.svSearchTask);
+       svTask=findViewById(R.id.svTask);
        lstvAllTask=findViewById(R.id.lstvAllTask);
         faBtn=findViewById(R.id.faBtn);
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.itmSettings)
+        {
+            Intent i=new Intent(getApplicationContext(),SettingsActivity.class);
+            startActivity(i);
+        }
+        if(item.getItemId()==R.id.itmHistory)
+        {
+            Intent i=new Intent(getApplicationContext(),HistoryActivity.class);
+            startActivity(i);
+        }
+        if(item.getItemId()==R.id.itmSignout)
+        {
+
+        }
+        return true;
     }
 }
