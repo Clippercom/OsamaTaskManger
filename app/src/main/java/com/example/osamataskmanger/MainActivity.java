@@ -11,13 +11,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
+public class MainActivity<which> extends AppCompatActivity implements DialogInterface.OnClickListener {
     private SearchView svTask;
     private ListView lstvAllTask;
     private FloatingActionButton faBtn;
+    private Object which;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,17 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     @Override
-    public void onClick(DialogInterface dialogInterface, int i) {
-
+    public void onClick(DialogInterface dialogInterface, int which) {
+       if(which == dialogInterface.BUTTON_POSITIVE)
+       {
+           Toast.makeText(getApplicationContext(), "loging out", Toast.LENGTH_SHORT).show();
+           dialogInterface.cancel();
+           finish();
+       }
+       if( which == DialogInterface.BUTTON_NEGATIVE)
+       {
+           Toast.makeText(getApplicationContext(), "loging out canceled", Toast.LENGTH_SHORT).show();
+           dialogInterface.cancel();
+       }
     }
 }
